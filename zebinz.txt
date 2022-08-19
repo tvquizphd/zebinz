@@ -1,0 +1,208 @@
+u/w      (w / u / ʊ)
+           (back close)
+i/y      (j / i / ɪ)
+           (front close)
+o        (o / ə / e)
+           (close-mid)
+p        (p / t / b / d)
+           (front plosives)
+k        (k / ɡ / h / ʔ)
+           (back plosives / frictives)
+l        (l / r / ɹ)
+           (liquids)
+m        (m / n / ŋ)
+           (nasal)
+a        (a / ɒ / ɑ / æ / ɛ / ɜ / ɔ / ʌ)
+           (open / open-mid)
+z        (z / s / ʃ / v / f / ʒ / θ / ð)
+           (front fricatives)
+x        (dʒ / tʃ / ks)
+           (affricates)
+oy       (eɪ / aɪ / ɔɪ)
+           (front dipthongs)
+ow       (oʊ / ɪʊ / aʊ)
+           (back dipthongs)
+ǃ        (ǃ / ǂ)
+           (clicks)
+
+Word is defined as AΩ.
+A sets the start of word:
+|Z  ::ZZ  :|ZZ  |:ZZ  ||ZZ
+   |::ZZ |:|ZZ ||:ZZ |||ZZ
+Ω is zero or more of Z.
+  
+Z is base 64 A-Z a-z 0-9 + /
+  |Z or Z use one of 64 phonemes.
+Prefixes :: :| |: ||
+  select one of the 4 sememe blocks.
+  1st Z is a sememe from the block.
+Prefixes |:: |:| ||: |||
+  8-bit fraction, 6-bit exponent
+  min (2^0)(0/256) = 0.00
+  max (2^64)(1+255/256) = 36.8 quintillion
+All Z in Ω add phonemes to the word.
+
+For all Z in Ω,
+  Pad each Z end with 00.
+  ZZ    -> 01111100 01111100
+  AP    -> 00000000 00111100
+For phoneme |Z in A,
+  Pad the Z end with 01.
+  |Z|Z  -> 01111101 01111101
+  |A|P  -> 01000000 00111101
+For ::ZZ :|ZZ |:ZZ ||ZZ in A,
+  Pad last Z end with 10.
+  The 2 bits pad start of 1st Z,
+    using : as 0 and | as 1.
+  |:ZZ  -> 10011111 01111110
+  ||AP  -> 11000000 00111110
+For |::ZZ |:|ZZ ||:ZZ |||ZZ in A,
+  Pad last Z end with 11.
+  The 2 bits pad start of 1st Z,
+    using : as 0 and | as 1.
+  ||:ZZ -> 10011111 01111111
+  |||AP -> 11000000 00111111
+
+256 sememes
+
+Z bits read for numerical value:
+200  Chinese radicals (ie, 亻忄手)
+16   tokens ABΓΔZΘHKΛMΠΣΦXYΩ
+5    basic logic ¬Z ∨Z ∧Z ⊻Z ∃Z 
+5    set builders ⊂Z ⊃Z ∩Z ∪Z ∈Z
+5    identifiers \Z var[Z] index[Z] int[Z] .int[Z]
+5    numerical relations int[Z]= int[Z]≠ int[Z]~ int[Z]≥ int[Z]<
+5    numerical operators +int[Z] –int[Z] ×int[Z] ÷int[Z] ^int[Z]
+5    variable relations Z= Z≠ Z~ Z≥ Z<
+5    variable operators +Z –Z ×Z ÷Z ^Z
+3    linkers \(Z \define{Z} \call{Z}
+2    terminators Z) \end{Z}
+
+
+64 syllables:
+
+1            A       I       E       i       e       a
+/ə˥ʔə˥/    /u/     /i/     /o/    /ɔɪ/    /aʊ/     /a/
+2            W       U       O       u       o       w
+/ə˥wə˩/   /wu/    /wi/    /wo/   /wɔɪ/   /waʊ/    /wa/
+3            /       V       Y       v       y       +
+/ə˩jə˥/   /ju/    /ji/    /jo/   /jɔɪ/   /jaʊ/    /ja/
+4            T       P       D       p       d       t
+/əp/      /pu/    /pi/    /po/   /pɔɪ/   /paʊ/    /pa/
+5            K       G       C       g       c       k
+/ək/      /ku/    /ki/    /ko/   /lɔɪ/   /kaʊ/    /ka/
+6            L       H       R       h       r       l
+/əl/      /lu/    /li/    /lo/   /lɔɪ/   /laʊ/    /la/
+7            M       B       N       b       n       m
+/əm/      /mu/    /mi/    /mo/   /mɔɪ/   /maʊ/    /ma/
+8            F       Z       S       z       s       f
+/əz/      /zu/    /zi/    /zo/   /zɔɪ/   /zaʊ/    /za/
+9            X       Q       J       q       j       x
+/ətʃ/    /tʃu/   /tʃi/   /tʃo/  /tʃɔɪ/  /tʃaʊ/   /tʃa/
+0
+/ǃə/
+
+A   /u/       (u)
+B   /mi/      (mi / ni / mɪ / nɪ)
+C   /ko/      (ko / go / ho / kə / gə / hə / ke / ge / he)
+D   /po/      (po / bo / do / pə / bə / də / pe / be / de)
+E   /o/       (o / ə / e)
+F   /zu/      (zu / ʃu / vu)
+G   /ki/      (ki / gi / hi / kɪ / gɪ / hɪ)
+H   /li/      (li / ri / lɪ / rɪ)
+I   /i/       (i / ɪ)
+J   /tʃo/     (dʒo / tʃo / dʒə / tʃə / dʒe / tʃe)
+K   /ku/      (ku / gu / hu)
+L   /lu/      (lu / ru)
+M   /mu/      (mu / nu)
+N   /mo/      (mo / no / mə / nə / me / ne)
+O   /wo/      (wo / wə / we)
+P   /pi/      (pi / bi / di / pɪ / bɪ / dɪ)
+Q   /tʃi/     (dʒi / tʃi / dʒɪ / tʃɪ)
+R   /lo/      (lo / ro / lə / rə / le / re)
+S   /zo/      (zo / ʃo / vo / zə / ʃə / və / ze / ʃe / ve)
+T   /pu/      (pu / bu / du)
+U   /wi/      (wi / wɪ)
+V   /ji/      (ji / jɪ)
+W   /wu/      (wu)
+X   /tʃu/     (tʃu)
+Y   /jo/      (jo / jə / je)
+Z   /zi/      (zi / ʃi / vi / zɪ / ʃɪ / vɪ)
+a   /a/       (a / æ / ɛ)
+b   /mɔɪ/     (meɪ / neɪ / maɪ / naɪ / mɔɪ / nɔɪ)
+c   /kaʊ/     (kaʊ / gaʊ / daʊ / koʊ / goʊ / doʊ / koʊ / goʊ / doʊ)
+d   /paʊ/     (paʊ / baʊ / daʊ / poʊ / boʊ / doʊ / poʊ / boʊ / doʊ)
+e   /aʊ/      (aʊ / oʊ / ɪʊ)
+f   /za/      (za / ʃa / va / zæ / ʃæ / væ / zɛ / ʃɛ / vɛ)
+g   /kɔɪ/     (keɪ / geɪ / heɪ / kaɪ / gaɪ / haɪ / kɔɪ / gɔɪ / hɔɪ)
+h   /lɔɪ/     (leɪ / reɪ / laɪ / raɪ / lɔɪ / rɔɪ)
+i   /ɔɪ/      (eɪ / aɪ / ɔɪ)
+j   /tʃaʊ/    (tʃaʊ / dʒaʊ / tʃoʊ / dʒoʊ / tʃɪʊ / dʒɪʊ)
+k   /pa/      (ka / ga / ha / kæ / gæ / hæ / kɛ / gɛ / hɛ)
+l   /la/      (la / ra / læ / ræ / lɛ / rɛ)
+m   /ma/      (ma / mæ / mɛ)
+n   /maʊ/     (maʊ / naʊ / moʊ / noʊ / mɪʊ / nɪʊ)
+o   /waʊ/     (waʊ / woʊ / wɪʊ)
+p   /pɔɪ/     (peɪ / beɪ / deɪ / paɪ / baɪ / daɪ / pɔɪ / bɔɪ / dɔɪ)
+q   /tʃɔɪ/    (dʒeɪ / tʃeɪ / dʒaɪ / tʃaɪ / dʒɔɪ / tʃɔɪ)
+r   /laʊ/     (laʊ / raʊ / loʊ / roʊ / lɪʊ / rɪʊ)
+s   /zaʊ/     (zaʊ / ʃaʊ / vaʊ / zoʊ / ʃoʊ / voʊ / zɪʊ / ʃɪʊ / vɪʊ)
+t   /pa/      (pa / ba / da / pæ / bæ / dæ / pɛ / bɛ / dɛ)
+u   /wɔɪ/     (weɪ / waɪ / wɔɪ)
+v   /jɔɪ/     (jeɪ / jaɪ / jɔɪ)
+w   /wa/      (wa / wæ / wɛ)
+x   /tʃa/     (dʒa / tʃa / dʒæ / tʃæ / dʒɛ / tʃɛ)
+y   /jaʊ/     (jaʊ / joʊ / jɪʊ)
+z   /zɔɪ/     (zeɪ / ʃeɪ / veɪ / zaɪ / ʃaɪ / vaɪ / zɔɪ / ʃɔɪ / vɔɪ)
+0   /ǃə/      (ǃ / ǂ)
+1   /ə˥ʔə˥/   (˥˥)
+2   /ə˥wə˩/   (˥˩)
+3   /ə˩jə˥/   (˩˥)
+4   /əp/      (p / b / d)
+5   /ək/      (k / g / h)
+6   /əl/      (l / r)
+7   /əm/      (m / n)
+8   /əz/      (z / ʃ / v)
+9   /ətʃ/     (dʒ / tʃ)
++   /ja/      (ja / jæ / jɛ)
+/   /ju/      (ju)
+
+### Phonetic encoding
+
+Hello world my name is John.
+## Broad transcription:
+palaʊ walp. mɔɪ mɔɪm iz tʃam.
+pa-laʊ wa-əl-əp mɔɪ mɔɪ-əm i-əz tʃa-əm
+## Base 64 mapping 17*8 = 136 bits:
+tr|wl7|b|bm|I8|xm
+
+### real 86 natural precision
+
+\define{etu}var[n] n = 2^etu \end{etu}
+
+\define{x}var[del]
+\define{min} 1 + 254/256 \end{min}
+\define{max} 1 + 255/256 \end{max}
+\define{diff} max - min = 1/256 \end{diff}
+\define{del}diff*2^x\end{del}
+x = \call{etu}var[del/diff]\end{etu}
+\end{x}
+
+\define{xa}
+\define{dela}1.5\end{dela}
+\define{idiff}256\end{idiff}
+xa = \call{x}var[dela]\end{x}
+\so
+xa = \call{etu}var[idiff*dela]\end{etu}
+\so
+xa = \call{etu}int[384]\end{etu}
+\so
+xa ~ 8.5
+\end{xa} 
+
+(1+254/256)*2^8 = 510
+(1+255/256)*2^8 = 511
+(1+0/256)*2^9 = 512
+(1+0/256)*2^9 = 514
+
+All ints from 0 to 512
